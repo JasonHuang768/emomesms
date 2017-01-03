@@ -12,7 +12,7 @@ namespace sms;
 
 class emomesms{
 
-    protected $Action = "http://imsp.emome.net:8008/imsp/sms/servlet";
+    protected $endpoint = "http://imsp.emome.net:8008/imsp/sms/servlet";
 
     public function __construct($userName, $passWord){
 
@@ -50,7 +50,7 @@ class emomesms{
         $params["dest_port"] = $this->convertDestPortByMessageType($params["dest_port"], $params["msg_type"]);
         $params["to_addr"]   = $this->convertToAddr($params["to_addr"]);
 
-        $url = "{$this->Action}/SubmitSM";
+        $url = "{$this->endpoint}/SubmitSM";
         $response = $this->makeHttpRequest($url, "POST", $params);
         return $this->_parseResponse($response);
 
